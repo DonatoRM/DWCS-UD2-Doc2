@@ -1,0 +1,9 @@
+body {
+    text-align: center;
+}
+#idTexto {
+    width: 500px;
+}
+section > p {
+    font-size: 24px;
+}

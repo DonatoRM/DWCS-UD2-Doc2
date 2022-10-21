@@ -1,0 +1,6 @@
+body {
+    text-align: center;
+}
+#resultado > p {
+    font-size: 24px;
+}

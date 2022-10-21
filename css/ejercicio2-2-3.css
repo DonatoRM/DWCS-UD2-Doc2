@@ -1,0 +1,12 @@
+body {
+    text-align: center;
+}
+#idGrados {
+    width: 500px;
+}
+#idTipo {
+    background-color: rgb(233, 233, 233);
+}
+section > p {
+    font-size: 24px;
+}

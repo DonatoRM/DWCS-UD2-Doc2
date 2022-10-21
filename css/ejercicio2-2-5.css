@@ -1,0 +1,9 @@
+body {
+    text-align: center;
+}
+#idDni {
+    width: 75px;
+}
+section > p {
+    font-size: 24px;
+}
