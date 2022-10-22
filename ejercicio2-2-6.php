@@ -10,6 +10,12 @@
         <title>Ejercicio 2.2.6.</title>
         <link rel="stylesheet" type="text/css" href="./css/ejercicio2-2-6.css" media="screen" />
     </head>
+    <?php
+    session_start();
+    if (!isset($_SESSION["mySession"])) {
+      $_SESSION["mySession"] = [];
+    }
+    ?>
     <body>
         <header>
             <h1>Ejercicio 2.2.6 - Características del lenguaje PHP</h1>
@@ -20,7 +26,7 @@
                 <form
                     name="formularioPrincipal"
                     method="post"
-                    action="<?php echo $_SERVER['PHP_SELF']; ?>"
+                    action="<?php echo $_SERVER["PHP_SELF"]; ?>"
                     target="_self"
                 >
                     <label for="idPalabra">Introduzca una palabra:</label>
@@ -29,25 +35,17 @@
                 </form>
             </section>
             <section>
-                <p>
-                    <?php if (!isset($_POST['enviar'])) {
-                        function insertar(string $palabra): array
-                        {
-                            static $lista = [];
-                            $_ENV['$lista[]'] = $palabra;
-                            $devuelto = $_ENV['lista[]'];
-                            return $devuelto;
-                        }
-                        $palabra = trim($_POST['palabra']);
-                        if (strlen($palabra) !== 0) {
-                            $lista = insertar($palabra);
-                            foreach ($lista as $trozo) {
-                                echo "<p>$trozo</p><br/>";
-                            }
-                        }
-                    } else {
-                    } ?>
-                </p>
+                <?php if (isset($_POST["enviar"])) {
+                  $palabra = trim($_POST["palabra"]);
+                  if ($palabra != "") {
+                    if (!in_array($palabra, $_SESSION["mySession"])) {
+                      $_SESSION["mySession"][] = $palabra;
+                    }
+                    foreach ($_SESSION["mySession"] as $valor) {
+                      echo "<p>$valor</p>";
+                    }
+                  }
+                } ?>
             </section>
         </main>
         <footer>
